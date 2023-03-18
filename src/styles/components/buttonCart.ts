@@ -26,7 +26,7 @@ export const ContainerButtonCart = styled('button', {
     borderRadius: '100%',
     position: 'absolute',
     bottom: '2rem',
-    left: '2rem',
+    right: '2rem',
     color: '$white',
 
     display: 'flex',

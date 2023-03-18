@@ -19,5 +19,34 @@ export const TotalContainer = styled('section', {
     fontSize: '$md',
     fontWeight: 'bold',
     marginTop: '2rem',
+    '-webkit-box-shadow': '-2px 2px 29px -3px black',
+    boxShadow: '-2px 2px 29px -3px black',
+  },
+
+  div: {
+    display: 'grid',
+    alignItems: 'center',
+    gridTemplateColumns: '1fr 1fr',
+  },
+
+  '.quantity': {
+
+  },
+
+  '.item': {
+    textAlign: 'end',
+  },
+
+  '.total': {
+    fontSize: '$md',
+    fontWeight: 'bold',
+    marginTop: 16,
+  },
+
+  '.total-value': {
+    textAlign: 'end',
+    fontSize: '$xl',
+    fontWeight: 'bold',
+    marginTop: 16,
   }
 })
