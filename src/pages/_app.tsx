@@ -23,7 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Container>
       <Header>
         <Link href='/'>
-          <img src="/Logo.svg" alt="Logo Ignite Shop" />
+          <Image src="/Logo.svg" alt="Logo Ignite Shop" width={129.74} height={52} />
         </Link>
 
         <ButtonCart onClick={() => handleOpenMenu()} />
