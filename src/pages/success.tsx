@@ -61,6 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const successData = {
     customerName,
     name: product?.description,
+    // @ts-ignore
     imageUrl: product?.price?.product.images[0],
   }
 
