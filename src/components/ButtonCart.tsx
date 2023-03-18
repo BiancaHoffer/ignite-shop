@@ -2,9 +2,6 @@ import Image from "next/image";
 
 import { ContainerButtonCart } from "../styles/components/buttonCart";
 
-import { TotalCart } from "./TotalCard";
-import { ItemsCart } from "./ItemsCard";
-
 interface ButtonCartProps {
   onClick: () => void;
 }
