@@ -59,7 +59,12 @@ export const DetailsContainer = styled('div', {
     fontWeight: 'bolder',
     fontSize: '$md',
 
-    '&:hover': {
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    },
+
+    '&:not(:disabled):hover': {
       backgroundColor: '$green300',
     },
   },
