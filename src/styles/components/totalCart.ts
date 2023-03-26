@@ -10,17 +10,23 @@ export const TotalContainer = styled('section', {
   marginBottom: 32,
 
   button: {
-    backgroundColor: '$green300',
+    backgroundColor: '$green500',
     borderRadius: 8,
     border: 'none',
     width: '100%',
     padding: '1.25rem',
-    color: '$white',
+    color: '$gray100',
     fontSize: '$md',
     fontWeight: 'bold',
     marginTop: '2rem',
     '-webkit-box-shadow': '-2px 2px 29px -3px black',
     boxShadow: '-2px 2px 29px -3px black',
+    cursor: 'pointer',
+
+    '&:hover': {
+      backgroundColor: '$green300',
+      color: '$white',
+    }
   },
 
   div: {

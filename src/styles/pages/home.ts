@@ -8,7 +8,7 @@ export const HomeContainer = styled('div', {
   marginLeft: 'auto',
 })
 
-export const Product = styled((Link), {
+export const Product = styled('div', {
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
   cursor: 'pointer',
@@ -31,7 +31,6 @@ export const Product = styled((Link), {
     borderRadius: 6,
 
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
 
     background: 'rgba(0, 0, 0, 0.6)',
@@ -40,6 +39,13 @@ export const Product = styled((Link), {
     opacity: 0,
     transition: 'all 0.2s ease-out',
     overflow: 'hidden',
+
+    div: {
+      display: 'flex',
+      flexDirection: 'column',
+
+      gap: '1rem',
+    },
 
     strong: {
       fontSize: '1.25rem',
@@ -57,6 +63,21 @@ export const Product = styled((Link), {
     footer: {
       transform: 'translate(0%)',
       opacity: 1,
+    }
+  },
+
+  button: {
+    background: '$green500',
+    borderRadius: 8,
+    padding: '0.5rem',
+    border: 0,
+    cursor: 'pointer',
+    width: 52,
+    height: 52,
+    alignSelf: 'center',
+
+    '&:hover': {
+      background: '$green300'
     }
   }
 })

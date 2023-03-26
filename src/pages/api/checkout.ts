@@ -5,7 +5,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { priceId } = req.body
 
   if (req.method !== 'POST') {
-    5
     return res.status(405).json({
       error: 'Method not allowed.'
     })

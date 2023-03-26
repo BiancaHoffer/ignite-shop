@@ -18,7 +18,6 @@ export const ContainerMenuCart = styled('div', {
   bottom: 0,
   boxShadow: '-17px 2px 29px -3px black',
 
-
   transformOrigin: "var(--radix-popover-content-transform-origin)",
   animation: `${slide} 0.3s ease-out`,
   outline: "none",

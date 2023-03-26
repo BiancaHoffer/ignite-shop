@@ -47,5 +47,6 @@ export const ContainerInfos = styled('div', {
     border: 'none',
     width: "fit-content",
     marginTop: 4,
+    cursor: 'pointer',
   }
 })

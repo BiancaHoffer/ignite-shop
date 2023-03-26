@@ -5,12 +5,16 @@ import { ItemCart } from "./ItemCard";
 import { TotalCart } from "./TotalCard";
 
 import { Close, ContainerMenuCart, ContainerItems } from "../styles/components/MenuCart";
+import { useCart } from "../hooks/useCart";
 
 interface MenuCartProps {
   setCloseMenu: Dispatch<SetStateAction<boolean>>;
 }
 
 export function MenuCart({ setCloseMenu }: MenuCartProps) {
+  const { cart } = useCart();
+  const cartLength = cart.length;
+
   function handleCloseMenu() {
     setCloseMenu(false);
   }
@@ -23,19 +27,23 @@ export function MenuCart({ setCloseMenu }: MenuCartProps) {
 
       <h2>Sacola de Comprar</h2>
 
-      <ContainerItems>
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-        <ItemCart />
-      </ContainerItems>
+      {cartLength <= 0 ? (
+        <p style={{ padding: 42 }}>
+          Seu carrinho está vazio :(
+        </p>)
+        : (
+          <ContainerItems>
+            {cart.map(item => {
+              return (
+                <ItemCart item={item} key={item.id} />
+              )
+            })}
+          </ContainerItems>
+        )}
+
+
 
       <TotalCart />
-
     </ContainerMenuCart>
   )
 }

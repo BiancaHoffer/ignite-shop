@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Image from 'next/image';
 import { GetStaticProps } from 'next';
 
@@ -9,6 +10,9 @@ import { stripe } from '../lib/stripe';
 import Stripe from 'stripe';
 
 import { HomeContainer, Product } from '../styles/pages/home';
+import { useCart } from '../hooks/useCart';
+import { useState } from 'react';
+
 
 interface Products {
   products: {
@@ -20,13 +24,39 @@ interface Products {
   }[]
 }
 
+interface Product {
+  id: string;
+  name: string;
+  imageUrl: string;
+  description: string;
+  price: string;
+}
+
+interface NewProduct extends Product {
+  amount: number;
+}
+
 export default function Home({ products }: Products) {
+  const { cart, addCart } = useCart();
+  const [amount, setAmount] = useState(1);
+
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 2.5,
       spacing: 48,
     }
   });
+
+  function handleAddCart(product: Product) {
+    const newProduct: NewProduct = {
+      ...product,
+      amount
+    }
+
+    addCart(newProduct);
+    setAmount(1);
+    console.log(cart)
+  }
 
   return (
     <>
@@ -38,16 +68,22 @@ export default function Home({ products }: Products) {
         {products.map(product => {
           return (
             <Product
-              href={`/product/${product.id}`}
-              prefetch={false}
               className='keen-slider__slide'
               key={product.id}
             >
-              <Image src={product.imageUrl} width={520} height={480} alt={product.name} />
+              <Link href={`/product/${product.id}`} prefetch={false}>
+                <Image src={product.imageUrl} width={520} height={480} alt={product.name} />
+              </Link>
 
               <footer>
-                <strong>{product.name}</strong>
-                <span>{product.price}</span>
+                <div>
+                  <strong>{product.name}</strong>
+                  <span>{product.price}</span>
+                </div>
+
+                <button onClick={() => handleAddCart(product)}>
+                  <Image src='/cart.svg' width={32} height={32} alt='' />
+                </button>
               </footer>
             </Product>
           )
