@@ -24,13 +24,7 @@ interface CartContextProps {
 export const CartContext = createContext({} as CartContextProps);
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<Cart[]>(function hasWindow() {
-    const storageCart = localStorage.getItem('@IgniteShop:cart');
-
-    if (storageCart) {
-      return JSON.parse(storageCart);
-    }
-
+  const [cart, setCart] = useState<Cart[]>(() => {
     return []
   });
 
@@ -47,10 +41,6 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     setCart(copyCart);
-
-    if (typeof window !== "undefined") {
-      localStorage.setItem('@IgniteShop:cart', JSON.stringify(copyCart));
-    }
   }
 
   function removeCart(product: Cart) {
@@ -61,10 +51,6 @@ export function CartProvider({ children }: CartProviderProps) {
     if (indexProduct >= 0) {
       copyCart.splice(indexProduct, 1);
       setCart(copyCart);
-
-      if (typeof window !== "undefined") {
-        localStorage.setItem('@IgniteShop:cart', JSON.stringify(copyCart));
-      }
     } else {
       throw Error();
     }
