@@ -40,7 +40,7 @@ export default function Home({ products }: Products) {
   });
 
   function handleAddCart(product: ProductData) {
-    const newProduct: NewProduct = {
+    const newProduct = {
       ...product,
       amount
     }
