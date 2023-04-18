@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -9,10 +11,11 @@ import 'keen-slider/keen-slider.min.css';
 import { stripe } from '../lib/stripe';
 import Stripe from 'stripe';
 
-import { HomeContainer, Product } from '../styles/pages/home';
-import { useCart } from '../hooks/useCart';
-import { useState } from 'react';
+import { NewProduct, ProductData } from '../@types/product';
 
+import { useCart } from '../hooks/useCart';
+
+import { HomeContainer, Product } from '../styles/pages/home';
 
 interface Products {
   products: {
@@ -20,20 +23,9 @@ interface Products {
     name: string;
     imageUrl: string;
     description: string;
+    defaultPriceId: string;
     price: string;
   }[]
-}
-
-interface Product {
-  id: string;
-  name: string;
-  imageUrl: string;
-  description: string;
-  price: string;
-}
-
-interface NewProduct extends Product {
-  amount: number;
 }
 
 export default function Home({ products }: Products) {
@@ -47,7 +39,7 @@ export default function Home({ products }: Products) {
     }
   });
 
-  function handleAddCart(product: Product) {
+  function handleAddCart(product: ProductData) {
     const newProduct: NewProduct = {
       ...product,
       amount

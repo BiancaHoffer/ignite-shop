@@ -1,34 +1,30 @@
-'use client';
-
 import { createContext, ReactNode, useContext, useState } from 'react';
-
-interface Cart {
-  id: string;
-  name: string;
-  imageUrl: string;
-  description: string;
-  price: string;
-  amount: number;
-}
+import { NewProduct } from '../@types/product';
+import { formatPrice } from '../utils/formatPrice';
 
 interface CartProviderProps {
   children: ReactNode;
 }
 
+interface CartFormatted extends NewProduct {
+  priceFormatted: string;
+  subTotal: string;
+}
+
 interface CartContextProps {
-  cart: Cart[];
-  addCart: (product: Cart) => void;
-  removeCart: (product: Cart) => void;
+  cart: NewProduct[];
+  addCart: (product: NewProduct) => void;
+  removeCart: (product: NewProduct) => void;
 }
 
 export const CartContext = createContext({} as CartContextProps);
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<Cart[]>(() => {
+  const [cart, setCart] = useState<NewProduct[]>(() => {
     return []
   });
 
-  function addCart(product: Cart) {
+  function addCart(product: NewProduct) {
     const copyCart = [...cart];
 
     const indexProduct = copyCart.findIndex(cartItem => cartItem.id === product.id);
@@ -43,7 +39,7 @@ export function CartProvider({ children }: CartProviderProps) {
     setCart(copyCart);
   }
 
-  function removeCart(product: Cart) {
+  function removeCart(product: NewProduct) {
     const copyCart = [...cart];
 
     const indexProduct = copyCart.findIndex(cartItem => cartItem.id === product.id);

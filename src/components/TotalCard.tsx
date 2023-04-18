@@ -1,3 +1,4 @@
+import { useCart } from "../hooks/useCart";
 import { TotalContainer } from "../styles/components/totalCart";
 
 export function TotalCart() {
@@ -5,13 +6,11 @@ export function TotalCart() {
     <TotalContainer>
       <div>
         <p className="quantity">Quandidade</p>
-        <span className="item">3 itens</span>
+        <span className="item">3</span>
 
         <p className="total">Valor total</p>
-        <span className="total-value">R$ 270,00</span>
+        <span className="total-value">R$ 100,00</span>
       </div>
-
-
       <button>Finalizar compra</button>
     </TotalContainer>
   )

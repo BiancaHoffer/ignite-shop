@@ -12,7 +12,7 @@ export const ContainerMenuCart = styled('div', {
   position: 'absolute',
   height: '100vh',
   minWidth: 480,
-  zIndex: 1,
+  zIndex: 60,
   top: 0,
   right: 0,
   bottom: 0,
@@ -68,4 +68,16 @@ export const ContainerItems = styled('div', {
     background: '$green500',
     borderRadius: 8,
   },
+})
+
+export const OutsideMenuCart = styled('div', {
+  position: 'absolute',
+  width: '100%',
+  height: '100%',
+  right: 400,
+  bottom: 0,
+  zIndex: 10,
+  background: 'red',
+  cursor: 'pointer',
+  backgroundColor: 'rgba(0,0,0,0.3)',
 })

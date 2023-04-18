@@ -1,3 +1,5 @@
+import { NewProduct, ProductData } from "@/src/@types/product"
+import { useCart } from "@/src/hooks/useCart"
 import { stripe } from "@/src/lib/stripe"
 import { DetailsContainer, ImageContainer, ProductContainer } from "@/src/styles/pages/product"
 import axios from "axios"
@@ -9,27 +11,30 @@ import { useState } from "react"
 import Stripe from "stripe"
 
 interface ProductProps {
-  id: string;
-  name: string;
-  imageUrl: string;
-  description: string;
-  defaultPriceId: string;
-  price: string;
+  product: ProductData;
 }
 
-interface teste {
-  product: ProductProps;
-}
+export default function Product({ product }: ProductProps) {
+  const { addCart } = useCart()
 
-export default function Product({ product }: teste) {
   const [redirectCheckout, setRedirectCheckout] = useState(false);
-
+  const [amount, setAmount] = useState(1);
   const { isFallback } = useRouter();
 
   if (isFallback) {
     return (
       <h1>Carregando...</h1>
     )
+  }
+
+  function handleAddCart(product: ProductData) {
+    const newProduct: NewProduct = {
+      ...product,
+      amount
+    }
+
+    addCart(newProduct);
+    setAmount(1);
   }
 
   async function handleBuyProduct() {
@@ -46,7 +51,6 @@ export default function Product({ product }: teste) {
 
     } catch (err) {
       setRedirectCheckout(false);
-
       console.log(err)
       alert('Erro ao direcionar para página de checkout, tente novamente mais tarde. ')
     }
@@ -72,9 +76,11 @@ export default function Product({ product }: teste) {
           <h1>{product.name}</h1>
           <span>{product.price}</span>
           <p>{product.description}</p>
-          <button onClick={() => handleBuyProduct()} disabled={redirectCheckout}
+          <button
+            onClick={() => handleAddCart(product)}
+            disabled={redirectCheckout}
           >
-            Comprar agora
+            Adicionar no carrinho
           </button>
         </DetailsContainer>
       </ProductContainer>

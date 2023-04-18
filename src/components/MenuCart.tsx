@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ItemCart } from "./ItemCard";
 import { TotalCart } from "./TotalCard";
 
-import { Close, ContainerMenuCart, ContainerItems } from "../styles/components/MenuCart";
+import { Close, ContainerMenuCart, ContainerItems, OutsideMenuCart } from "../styles/components/MenuCart";
 import { useCart } from "../hooks/useCart";
 
 interface MenuCartProps {
@@ -20,30 +20,31 @@ export function MenuCart({ setCloseMenu }: MenuCartProps) {
   }
 
   return (
-    <ContainerMenuCart>
-      <Close onClick={() => handleCloseMenu()}>
-        <Image src='/close.svg' width={24} height={24} alt='Botão fechar' />
-      </Close>
+    <>
+      <ContainerMenuCart>
+        <Close onClick={() => handleCloseMenu()}>
+          <Image src='/close.svg' width={24} height={24} alt='Botão fechar' />
+        </Close>
 
-      <h2>Sacola de Comprar</h2>
+        <h2>Sacola de Comprar</h2>
 
-      {cartLength <= 0 ? (
-        <p style={{ padding: 42 }}>
-          Seu carrinho está vazio :(
-        </p>)
-        : (
-          <ContainerItems>
-            {cart.map(item => {
-              return (
-                <ItemCart item={item} key={item.id} />
-              )
-            })}
-          </ContainerItems>
-        )}
+        {cartLength <= 0 ? (
+          <p style={{ padding: 42 }}>
+            Seu carrinho está vazio :(
+          </p>)
+          : (
+            <ContainerItems>
+              {cart.map(item => {
+                return (
+                  <ItemCart item={item} key={item.id} />
+                )
+              })}
+            </ContainerItems>
+          )}
+        <TotalCart />
+      </ContainerMenuCart>
 
-
-
-      <TotalCart />
-    </ContainerMenuCart>
+      <OutsideMenuCart onClick={() => handleCloseMenu()} />
+    </>
   )
 }
