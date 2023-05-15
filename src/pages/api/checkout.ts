@@ -2,7 +2,7 @@ import { stripe } from '@/src/lib/stripe';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { priceId } = req.body
+  const { priceId, amount } = req.body
 
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     line_items: [
       {
         price: priceId,
-        quantity: 1,
+        quantity: amount,
       }
     ]
   })

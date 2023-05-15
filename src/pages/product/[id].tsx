@@ -2,6 +2,7 @@ import { NewProduct, ProductData } from "@/src/@types/product"
 import { useCart } from "@/src/hooks/useCart"
 import { stripe } from "@/src/lib/stripe"
 import { DetailsContainer, ImageContainer, ProductContainer } from "@/src/styles/pages/product"
+import { formatPrice } from "@/src/utils/formatPrice"
 import axios from "axios"
 import { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
@@ -74,7 +75,7 @@ export default function Product({ product }: ProductProps) {
 
         <DetailsContainer>
           <h1>{product.name}</h1>
-          <span>{product.price}</span>
+          <span>{formatPrice(product.price)}</span>
           <p>{product.description}</p>
           <button
             onClick={() => handleAddCart(product)}
@@ -120,10 +121,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
     imageUrl: response.images[0],
     description: response.description,
     defaultPriceId: price.id,
-    price: new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price.unit_amount! / 100), // centavos
+    price: price.unit_amount! / 100, // centavos
   }
 
   return {

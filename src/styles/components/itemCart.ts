@@ -48,5 +48,13 @@ export const ContainerInfos = styled('div', {
     width: "fit-content",
     marginTop: 4,
     cursor: 'pointer',
+
+    '&:disabled': {
+      opacity: 0.3,
+      cursor: 'not-allowed',
+    },
+
   }
+
+
 })

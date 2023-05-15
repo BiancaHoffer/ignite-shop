@@ -16,20 +16,21 @@ import { NewProduct, ProductData } from '../@types/product';
 import { useCart } from '../hooks/useCart';
 
 import { HomeContainer, Product } from '../styles/pages/home';
+import { formatPrice } from '../utils/formatPrice';
 
 interface Products {
   products: {
-    id: string;
+    id: number;
     name: string;
     imageUrl: string;
     description: string;
     defaultPriceId: string;
-    price: string;
+    price: number;
   }[]
 }
 
 export default function Home({ products }: Products) {
-  const { cart, addCart } = useCart();
+  const { cart, addCart, total } = useCart();
   const [amount, setAmount] = useState(1);
 
   const [sliderRef] = useKeenSlider({
@@ -40,14 +41,13 @@ export default function Home({ products }: Products) {
   });
 
   function handleAddCart(product: ProductData) {
-    const newProduct = {
+    const newProduct: NewProduct = {
       ...product,
       amount
     }
 
     addCart(newProduct);
     setAmount(1);
-    console.log(cart)
   }
 
   return (
@@ -70,7 +70,7 @@ export default function Home({ products }: Products) {
               <footer>
                 <div>
                   <strong>{product.name}</strong>
-                  <span>{product.price}</span>
+                  <span>{formatPrice(product.price)}</span>
                 </div>
 
                 <button onClick={() => handleAddCart(product)}>
@@ -98,10 +98,7 @@ export const getStaticProps: GetStaticProps = async () => {
       name: product.name,
       imageUrl: product.images[0],
       description: product.description,
-      price: new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(price.unit_amount! / 100), // centavos
+      price: price.unit_amount! / 100 // cents
     }
   })
 
@@ -109,6 +106,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       products
     },
-    revalidate: 60 * 60 * 2, // 2 horas
+    revalidate: 60 * 60 * 2, // 2 hours
   }
 }

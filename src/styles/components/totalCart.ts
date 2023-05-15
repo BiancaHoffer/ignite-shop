@@ -26,7 +26,17 @@ export const TotalContainer = styled('section', {
     '&:hover': {
       backgroundColor: '$green300',
       color: '$white',
-    }
+    },
+
+    '&:disabled': {
+      opacity: 0.3,
+      cursor: 'not-allowed',
+    },
+
+    '&:disabled:hover': {
+      backgroundColor: '$green500',
+      color: '$gray100',
+    },
   },
 
   div: {
