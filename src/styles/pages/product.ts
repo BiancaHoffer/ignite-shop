@@ -6,7 +6,12 @@ export const ProductContainer = styled('div', {
   alignItems: 'stretch',
   gap: '4rem',
   maxWidth: 1180,
-  margin: '0 auto'
+  margin: '0 auto',
+  padding: '0 10px',
+
+  '@media (max-width: 860px)': {
+    gridTemplateColumns: '1fr',
+  },
 })
 
 export const ImageContainer = styled('div', {
@@ -18,6 +23,7 @@ export const ImageContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+
 
   img: {
     objectFit: 'cover',

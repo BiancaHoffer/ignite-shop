@@ -86,8 +86,4 @@ export const OutsideMenuCart = styled('div', {
   background: 'red',
   cursor: 'pointer',
   backgroundColor: 'rgba(0,0,0,0.3)',
-
-  '@media (max-width: 460px)': {
-    display: 'none',
-  },
 })
