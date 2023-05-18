@@ -30,14 +30,28 @@ interface Products {
 }
 
 export default function Home({ products }: Products) {
-  const { cart, addCart, total } = useCart();
+  const { addCart } = useCart();
   const [amount, setAmount] = useState(1);
 
   const [sliderRef] = useKeenSlider({
+    breakpoints: {
+      "(min-width: 100px)": {
+        slides: { perView: 1, spacing: 5 },
+      },
+      "(min-width: 720px)": {
+        slides: { perView: 2, spacing: 5 },
+      },
+      "(min-width: 900px)": {
+        slides: { perView: 2, spacing: 5 },
+      },
+      "(min-width: 1200px)": {
+        slides: { perView: 3, spacing: 10 },
+      },
+    },
     slides: {
       perView: 2.5,
       spacing: 48,
-    }
+    },
   });
 
   function handleAddCart(product: ProductData) {
@@ -48,6 +62,7 @@ export default function Home({ products }: Products) {
 
     addCart(newProduct);
     setAmount(1);
+    console.log(product)
   }
 
   return (
@@ -98,6 +113,7 @@ export const getStaticProps: GetStaticProps = async () => {
       name: product.name,
       imageUrl: product.images[0],
       description: product.description,
+      defaultPriceId: price.id,
       price: price.unit_amount! / 100 // cents
     }
   })

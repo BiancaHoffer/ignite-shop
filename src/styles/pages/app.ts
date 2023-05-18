@@ -9,11 +9,12 @@ export const Container = styled('header', {
 })
 
 export const Header = styled('div', {
-  padding: '2rem 0',
+  padding: '2rem 10px',
   width: '100%',
   maxWidth: 1180,
   margin: '0 auto',
 
   display: 'flex',
   justifyContent: 'space-between',
+  flexWrap: 'wrap'
 })

@@ -6,6 +6,7 @@ export const HomeContainer = styled('div', {
   width: '100%',
   maxWidth: 1360,
   marginLeft: 'auto',
+  padding: '0 10px',
 })
 
 export const Product = styled('div', {

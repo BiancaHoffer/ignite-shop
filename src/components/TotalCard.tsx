@@ -2,26 +2,23 @@ import axios from "axios";
 import { useCart } from "../hooks/useCart";
 import { TotalContainer } from "../styles/components/totalCart";
 import { formatPrice } from "../utils/formatPrice";
-import { useRouter } from "next/router";
 
 export function TotalCart() {
   const { total, cart, totalItens } = useCart();
 
   async function handleBuyProduct() {
     try {
-      const response = await axios.post('api/checkout', {
-        priceId: cart.map(product => product.defaultPriceId),
-        amount: cart.map(product => product.amount),
+      const response = await axios.post('/api/checkout', {
+        products: cart,
       })
 
       const { checkoutUrl } = response.data;
 
       window.location.href = checkoutUrl;
     } catch (err) {
-      alert('erro ao encaminhar para checkout')
+      alert('Erro ao encaminhar para checkout, tente novamente mais tarde')
       console.log(err)
     }
-
   }
 
   return (

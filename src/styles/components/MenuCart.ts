@@ -11,7 +11,8 @@ export const ContainerMenuCart = styled('div', {
   backgroundColor: '$gray800',
   position: 'absolute',
   height: '100vh',
-  minWidth: 480,
+  width: '100%',
+  maxWidth: 480,
   zIndex: 60,
   top: 0,
   right: 0,
@@ -24,6 +25,10 @@ export const ContainerMenuCart = styled('div', {
 
   display: 'flex',
   flexDirection: 'column',
+
+  '@media (max-width: 1380px)': {
+    right: -20,
+  },
 
   h2: {
     marginTop: "2rem",
@@ -73,6 +78,7 @@ export const ContainerItems = styled('div', {
 export const OutsideMenuCart = styled('div', {
   position: 'absolute',
   width: '100%',
+  maxWidth: '100%',
   height: '100%',
   right: 400,
   bottom: 0,
@@ -80,4 +86,8 @@ export const OutsideMenuCart = styled('div', {
   background: 'red',
   cursor: 'pointer',
   backgroundColor: 'rgba(0,0,0,0.3)',
+
+  '@media (max-width: 460px)': {
+    display: 'none',
+  },
 })
