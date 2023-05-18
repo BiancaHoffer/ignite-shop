@@ -26,7 +26,8 @@ export const ImageContainer = styled('div', {
 
 
   img: {
-    objectFit: 'cover',
+    objectFit: 'contain',
+    width: '100%',
   },
 })
 
