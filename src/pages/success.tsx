@@ -12,8 +12,6 @@ interface Item {
 }
 
 export default function Success({ customerName, productsImages }: Item) {
-  console.log(customerName, productsImages);
-
   return (
     <>
       <Head>

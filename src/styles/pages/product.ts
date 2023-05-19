@@ -24,7 +24,6 @@ export const ImageContainer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
 
-
   img: {
     objectFit: 'contain',
     width: '100%',
@@ -50,6 +49,7 @@ export const DetailsContainer = styled('div', {
 
   p: {
     marginTop: '2.5rem',
+    paddingBottom: '22px',
     lineHeight: 1.6,
     fontSize: '$md',
     color: '$gray300',
