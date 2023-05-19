@@ -29,7 +29,6 @@ export function ItemCart({ item }: ItemCartProps) {
       <ContainerInfos>
         <h3>{item.name}</h3>
         <span>{formatPrice(item.price)}</span>
-        <p>{item.defaultPriceId}aa</p>
         <span>
           Quantidade: {item.amount}
           <button

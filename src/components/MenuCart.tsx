@@ -26,7 +26,7 @@ export function MenuCart({ setCloseMenu }: MenuCartProps) {
           <Image src='/close.svg' width={24} height={24} alt='Botão fechar' />
         </Close>
 
-        <h2>Sacola de Comprar</h2>
+        <h2>Sacola de Compras</h2>
 
         {cartLength <= 0 ? (
           <p style={{ padding: 42 }}>
