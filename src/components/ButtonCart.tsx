@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useCart } from "../hooks/useCart";
-
 import { ContainerButtonCart } from "../styles/components/buttonCart";
 
 interface ButtonCartProps {

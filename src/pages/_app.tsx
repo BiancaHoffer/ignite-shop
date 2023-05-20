@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ButtonCart } from '../components/ButtonCart';
-
 import { globalStyles } from '../styles/global'
 import { Container, Header } from '../styles/pages/app';
 import { MenuCart } from '../components/MenuCart';

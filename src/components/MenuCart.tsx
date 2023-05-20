@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-
 import { ItemCart } from "./ItemCard";
 import { TotalCart } from "./TotalCard";
-
 import { Close, ContainerMenuCart, ContainerItems, OutsideMenuCart } from "../styles/components/MenuCart";
 import { useCart } from "../hooks/useCart";
 

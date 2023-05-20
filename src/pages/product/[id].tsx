@@ -38,25 +38,6 @@ export default function Product({ product }: ProductProps) {
     setAmount(1);
   }
 
-  async function handleBuyProduct() {
-    try {
-      setRedirectCheckout(true);
-
-      const response = await axios.post('/api/checkout', {
-        priceId: product.defaultPriceId
-      })
-
-      const { checkoutUrl } = response.data;
-
-      window.location.href = checkoutUrl;
-
-    } catch (err) {
-      setRedirectCheckout(false);
-      console.log(err)
-      alert('Erro ao direcionar para página de checkout, tente novamente mais tarde. ')
-    }
-  }
-
   return (
     <>
       <Head>

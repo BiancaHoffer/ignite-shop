@@ -1,17 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import { NewProduct } from '../@types/product';
-import { formatPrice } from '../utils/formatPrice';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 interface CartProviderProps {
   children: ReactNode;
-}
-
-interface CartFormatted extends NewProduct {
-  priceFormatted: string;
-  subTotal: string;
 }
 
 interface CartContextProps {
@@ -109,6 +102,5 @@ export function CartProvider({ children }: CartProviderProps) {
 
 export function useCart() {
   const context = useContext(CartContext);
-
   return context;
 }
