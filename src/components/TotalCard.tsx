@@ -15,6 +15,8 @@ export function TotalCart() {
         products: cart,
       });
 
+      console.log(response);
+
       const { checkoutUrl } = response.data;
 
       window.location.href = checkoutUrl;

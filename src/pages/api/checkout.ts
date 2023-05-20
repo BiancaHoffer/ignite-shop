@@ -1,9 +1,9 @@
-import { ProductData } from '@/src/@types/product';
+import { NewProduct } from '@/src/@types/product';
 import { stripe } from '@/src/lib/stripe';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { products } = req.body as { products: ProductData[] }
+  const { products, } = req.body as { products: NewProduct[] }
 
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -26,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     cancel_url: cancelUrl,
     line_items: products.map(product => ({
       price: product.defaultPriceId,
-      quantity: 1,
+      quantity: product.amount,
     }))
   })
 
