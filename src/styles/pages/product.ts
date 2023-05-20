@@ -8,7 +8,13 @@ export const ProductContainer = styled('div', {
   maxWidth: 1180,
   width: '100%',
   margin: '0 auto',
-  padding: '0 10px',
+  padding: '20px 10px',
+
+  '.container-image': {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 
   '@media (max-width: 860px)': {
     gridTemplateColumns: '1fr',
@@ -20,10 +26,11 @@ export const ImageContainer = styled('div', {
   maxWidth: 576,
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
-  padding: '0.25rem',
+  //padding: '0.25rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  alignSelf: 'center',
 
   img: {
     objectFit: 'contain',
@@ -66,6 +73,7 @@ export const DetailsContainer = styled('div', {
     cursor: 'pointer',
     fontWeight: 'bolder',
     fontSize: '$md',
+    marginBottom: '20px',
 
     '&:disabled': {
       opacity: 0.6,

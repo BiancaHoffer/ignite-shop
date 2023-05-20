@@ -45,15 +45,16 @@ export default function Product({ product }: ProductProps) {
       </Head>
 
       <ProductContainer>
-        <ImageContainer>
-          <Image
-            src={product.imageUrl}
-            width={520}
-            height={480}
-            alt={product.name}
-          />
-        </ImageContainer>
-
+        <div className="container-image">
+          <ImageContainer>
+            <Image
+              src={product.imageUrl}
+              width={520}
+              height={480}
+              alt={product.name}
+            />
+          </ImageContainer>
+        </div>
         <DetailsContainer>
           <h1>{product.name}</h1>
           <span>{formatPrice(product.price)}</span>
@@ -65,7 +66,7 @@ export default function Product({ product }: ProductProps) {
             Adicionar no carrinho
           </button>
         </DetailsContainer>
-      </ProductContainer>
+      </ProductContainer >
     </>
   )
 }
