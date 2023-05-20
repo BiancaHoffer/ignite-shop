@@ -33,6 +33,8 @@ export default function Home({ products }: Products) {
   const { addCart } = useCart();
   const [amount, setAmount] = useState(1);
 
+
+
   const [sliderRef] = useKeenSlider({
     breakpoints: {
       "(min-width: 100px)": {
