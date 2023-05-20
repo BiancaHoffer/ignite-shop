@@ -7,8 +7,9 @@ export const SuccessContainer = styled('main', {
   justifyContent: 'center',
   alignItems: 'center',
   margin: '0 auto',
-  height: '100vh',
-  padding: '0 10px',
+  width: '100%',
+  maxWidth: 1180,
+  padding: '20px 10px',
 
   h1: {
     fontSize: '$2xl',
@@ -42,8 +43,14 @@ export const SuccessContainer = styled('main', {
   '.container-images': {
     display: 'flex',
     gap: '8px',
-    flexWrap: 'wrap',
+    flexDirection: 'row',
     justifyContent: 'center',
+  },
+
+  '@media (max-width: 620px)': {
+    '.container-images': {
+      flexWrap: 'wrap',
+    }
   }
 })
 
