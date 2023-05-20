@@ -42,6 +42,10 @@ export const DetailsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 
+  '@media (max-width:620px)': {
+    alignItems: 'center',
+  },
+
   h1: {
     fontSize: '$2xl',
     color: '$gray300',
@@ -74,6 +78,8 @@ export const DetailsContainer = styled('div', {
     fontWeight: 'bolder',
     fontSize: '$md',
     marginBottom: '20px',
+    width: '100%',
+    maxWidth: 400,
 
     '&:disabled': {
       opacity: 0.6,
