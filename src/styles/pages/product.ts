@@ -3,9 +3,10 @@ import { styled } from "..";
 export const ProductContainer = styled('div', {
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
-  alignItems: 'stretch',
+  alignItems: 'center',
   gap: '4rem',
   maxWidth: 1180,
+  width: '100%',
   margin: '0 auto',
   padding: '0 10px',
 

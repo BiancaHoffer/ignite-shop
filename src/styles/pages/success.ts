@@ -1,4 +1,3 @@
-import { redirect } from "next/dist/server/api-utils";
 import { styled } from "..";
 
 export const SuccessContainer = styled('main', {
